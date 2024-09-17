@@ -3,9 +3,12 @@ package pe.edu.upc.talent_tune.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "Usuario")
-public class Usuario {
+public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
@@ -13,8 +16,11 @@ public class Usuario {
     private String nombreUsuario;
     @Column(name = "contrasenia", nullable = false, length = 20)
     private String contrasenia;
+    private Boolean enabled;
     @Column(name = "descripcion", length = 45)
     private String descripcion;
+    @Column(name = "descripcion", length = 45)
+
     //consultar
     @JsonIgnore
     @OneToOne
@@ -95,5 +101,13 @@ public class Usuario {
 
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
