@@ -12,6 +12,8 @@ public class UsuarioDTO {
     private Persona persona;
     private Rol rol;
     private Evento evento;
+    private Boolean enabled;
+    private String nombreRol;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -67,5 +69,21 @@ public class UsuarioDTO {
 
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getNombreRol() {
+        return nombreRol;
+    }
+
+    public void setNombreRol(String nombreRol) {
+        this.nombreRol = nombreRol;
     }
 }

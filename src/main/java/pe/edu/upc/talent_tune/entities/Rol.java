@@ -10,6 +10,8 @@ public class Rol implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRol;
+    @Column(name = "nombreRol", nullable = false, length = 100)
+    private String nombreRol;
     @Column(name = "tipoRol", nullable = false, length = 20)
     private String tipoRol;
     @Column(name = "areaDestacada",length = 20)
@@ -70,5 +72,13 @@ public class Rol implements Serializable {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getNombreRol() {
+        return nombreRol;
+    }
+
+    public void setNombreRol(String nombreRol) {
+        this.nombreRol = nombreRol;
     }
 }

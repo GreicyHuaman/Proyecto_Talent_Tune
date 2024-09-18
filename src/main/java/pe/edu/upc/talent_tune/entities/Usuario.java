@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idRol")
-    private Rol rol;
+    private Rol roles;
     @ManyToOne
     @JoinColumn(name = "idEvento")
     private Evento evento;
@@ -87,12 +87,12 @@ public class Usuario implements Serializable {
         this.persona = persona;
     }
 
-    public Rol getRol() {
-        return rol;
+    public Rol getroles() {
+        return roles;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setroles(Rol rol) {
+        this.roles = rol;
     }
 
     public Evento getEvento() {
@@ -110,4 +110,5 @@ public class Usuario implements Serializable {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
 }
