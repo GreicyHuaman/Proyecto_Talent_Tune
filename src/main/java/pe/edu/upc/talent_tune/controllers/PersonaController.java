@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Personas")
+@RequestMapping("/personas")
 public class PersonaController {
     @Autowired
     private IPersonaService pS;

@@ -17,7 +17,11 @@ public class ContratoDTO {
 
     private double salarioContrato;
 
-    private Usuario usuario;
+    private String estadoContrato;
+
+    private Usuario idUsuarioManager;
+
+    private Usuario idUsuarioTalento;
 
     private Banda banda;
 
@@ -61,12 +65,28 @@ public class ContratoDTO {
         this.salarioContrato = salarioContrato;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getEstadoContrato() {
+        return estadoContrato;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setEstadoContrato(String estadoContrato) {
+        this.estadoContrato = estadoContrato;
+    }
+
+    public Usuario getIdUsuarioManager() {
+        return idUsuarioManager;
+    }
+
+    public void setIdUsuarioManager(Usuario idUsuarioManager) {
+        this.idUsuarioManager = idUsuarioManager;
+    }
+
+    public Usuario getIdUsuarioTalento() {
+        return idUsuarioTalento;
+    }
+
+    public void setIdUsuarioTalento(Usuario idUsuarioTalento) {
+        this.idUsuarioTalento = idUsuarioTalento;
     }
 
     public Banda getBanda() {
