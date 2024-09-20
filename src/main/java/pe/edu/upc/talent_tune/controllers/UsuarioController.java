@@ -42,5 +42,21 @@ public class UsuarioController {
         uS.delete(id);
     }
 
+    @GetMapping("/pais")
+    public List<UsuarioDTO> buscarPorPais(@RequestParam("pais") String pais) {
+        return uS.buscarPorPais(pais).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, UsuarioDTO.class);
+        }).collect(Collectors.toList());
+    };
+
+    @GetMapping("/estudios")
+    public List<UsuarioDTO> buscarPorEstudios(@RequestParam("estudios") String estudios) {
+        return uS.buscarPorEstudios(estudios).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, UsuarioDTO.class);
+        }).collect(Collectors.toList());
+    };
+
 
 }
