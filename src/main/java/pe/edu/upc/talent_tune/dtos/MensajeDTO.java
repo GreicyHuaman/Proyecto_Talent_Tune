@@ -13,7 +13,9 @@ public class MensajeDTO {
 
     private Date fechaMensaje;
 
-    private Usuario usuario;
+    private Usuario idUsuarioManager;
+
+    private Usuario idUsuarioTalento;
 
     private Banda banda;
 
@@ -41,12 +43,20 @@ public class MensajeDTO {
         this.fechaMensaje = fechaMensaje;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getIdUsuarioManager() {
+        return idUsuarioManager;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdUsuarioManager(Usuario idUsuarioManager) {
+        this.idUsuarioManager = idUsuarioManager;
+    }
+
+    public Usuario getIdUsuarioTalento() {
+        return idUsuarioTalento;
+    }
+
+    public void setIdUsuarioTalento(Usuario idUsuarioTalento) {
+        this.idUsuarioTalento = idUsuarioTalento;
     }
 
     public Banda getBanda() {
