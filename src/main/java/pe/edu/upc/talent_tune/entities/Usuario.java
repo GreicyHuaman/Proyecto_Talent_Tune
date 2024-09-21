@@ -3,27 +3,34 @@ package pe.edu.upc.talent_tune.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name = "Usuario")
-public class Usuario {
+public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
-    @Column(name = "nombreUsuario", nullable = false, length = 20)
-    private String nombreUsuario;
-    @Column(name = "contrasenia", nullable = false, length = 20)
-    private String contrasenia;
+    @Column(name = "Username", nullable = false, length = 20)
+    private String username;
+    @Column(name = "Password", nullable = false, length = 20)
+    private String password;
     @Column(name = "descripcion", length = 45)
     private String descripcion;
+    @Column(name = "Enabled",nullable = false)
+    private Boolean Enabled;
     //consultar
     @JsonIgnore
     @OneToOne
     @JoinColumn(name = "idPersona")
     private Persona persona;
 
-    @ManyToOne
-    @JoinColumn(name = "idRol")
-    private Rol rol;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUsuario")
+    private List<Rol> rol;
+
     @ManyToOne
     @JoinColumn(name = "idEvento")
     private Evento evento;
@@ -31,11 +38,12 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String contrasenia, String descripcion, Persona persona, Rol rol, Evento evento) {
+    public Usuario(int idUsuario, String username, String password, String descripcion, Boolean enabled, Persona persona, List<Rol> rol, Evento evento) {
         this.idUsuario = idUsuario;
-        this.nombreUsuario = nombreUsuario;
-        this.contrasenia = contrasenia;
+        this.username = username;
+        this.password = password;
         this.descripcion = descripcion;
+        Enabled = enabled;
         this.persona = persona;
         this.rol = rol;
         this.evento = evento;
@@ -49,20 +57,20 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getDescripcion() {
@@ -73,6 +81,14 @@ public class Usuario {
         this.descripcion = descripcion;
     }
 
+    public Boolean getEnabled() {
+        return Enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        Enabled = enabled;
+    }
+
     public Persona getPersona() {
         return persona;
     }
@@ -81,11 +97,11 @@ public class Usuario {
         this.persona = persona;
     }
 
-    public Rol getRol() {
+    public List<Rol> getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(List<Rol> rol) {
         this.rol = rol;
     }
 

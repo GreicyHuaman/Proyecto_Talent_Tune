@@ -13,4 +13,6 @@ public interface IBandaService {
     public void update(Banda banda);
 
     public void delete(int id);
+
+    List<String[]> BandasMasContratosActivos();
 }
