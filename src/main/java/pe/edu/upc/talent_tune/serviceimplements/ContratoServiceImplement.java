@@ -12,26 +12,26 @@ import java.util.List;
 @Service
 public class ContratoServiceImplement implements IContratoService {
     @Autowired
-    private IContratoRepository jR;
+    private IContratoRepository ctR;
 
 
     @Override
     public List<Contrato> list() {
-        return jR.findAll();
+        return ctR.findAll();
     }
 
     @Override
     public void insert(Contrato contrato) {
-        jR.save(contrato);
+        ctR.save(contrato);
     }
 
     @Override
     public void update(Contrato contrato) {
-        jR.save(contrato);
+        ctR.save(contrato);
     }
 
     @Override
     public void delete(int id) {
-        jR.deleteById(id);
+        ctR.deleteById(id);
     }
 }

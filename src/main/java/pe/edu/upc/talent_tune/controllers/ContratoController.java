@@ -14,15 +14,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Contrato")
+@RequestMapping("/contratos")
 public class ContratoController {
 
     @Autowired
-    private IContratoService cS;
+    private IContratoService ctS;
 
     @GetMapping
     public List<MensajeDTO> listarContrato(){
-        return cS.list().stream().map(x->{
+        return ctS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
             return m.map(x, MensajeDTO.class);
         }).collect(Collectors.toList());
@@ -32,18 +32,18 @@ public class ContratoController {
     public void registrar(@RequestBody ContratoDTO dto){
         ModelMapper m = new ModelMapper();
         Contrato contrato = m.map(dto, Contrato.class);
-        cS.update(contrato);
+        ctS.update(contrato);
     }
 
     @PatchMapping
     public void modificar(@RequestBody ContratoDTO dto){
         ModelMapper m = new ModelMapper();
         Contrato contrato = m.map(dto, Contrato.class);
-        cS.update(contrato);
+        ctS.update(contrato);
     }
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
-        cS.delete(id);
+        ctS.delete(id);
     }
 }

@@ -1,5 +1,7 @@
 package pe.edu.upc.talent_tune.entities;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,7 +13,7 @@ public class Evento {
     @Column(name = "nombreEvento", nullable = false, length = 30)
     private String nombreEvento;
     @Column(name = "fechaEvento", nullable = false)
-    private Date fechaEvento;
+    private LocalDate fechaEvento;
     @Column(name = "descripcionEvento", length = 50)
     private String descripcionEvento;
 
@@ -22,7 +24,7 @@ public class Evento {
     public Evento() {
     }
 
-    public Evento(int idEvento, String nombreEvento, Date fechaEvento, String descripcionEvento, Categoria categoria) {
+    public Evento(int idEvento, String nombreEvento, LocalDate fechaEvento, String descripcionEvento, Categoria categoria) {
         this.idEvento = idEvento;
         this.nombreEvento = nombreEvento;
         this.fechaEvento = fechaEvento;

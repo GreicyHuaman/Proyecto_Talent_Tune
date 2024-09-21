@@ -47,11 +47,11 @@ public class Usuario implements Serializable {
         this.evento = evento;
     }
 
-    public int getIdPersona() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdPersona(int idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 

@@ -33,4 +33,14 @@ public class UsuarioServiceImplement implements IUsuarioService {
     public void delete(int id) {
         uR.deleteById(id);
     }
+
+    @Override
+    public List<Usuario> buscarPorPais(String pais) {
+        return uR.buscarPorPais(pais);
+    }
+
+    @Override
+    public List<Usuario> buscarPorEstudios(String estudios) {
+        return uR.buscarPorEstudios(estudios);
+    }
 }

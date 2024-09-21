@@ -2,6 +2,7 @@ package pe.edu.upc.talent_tune.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,7 +16,7 @@ public class Contrato {
     private String acuerdoContrato;
 
     @Column(name = "fechaContrato", nullable = false, length = 30)
-    private Date fechaContrato;
+    private LocalDate fechaContrato;
 
     @Column(name = "duracionContrato", nullable = false, length = 30)
     private String duracionContrato;
@@ -23,9 +24,16 @@ public class Contrato {
     @Column(name = "salarioContrato", nullable = false)
     private double salarioContrato;
 
+    @Column(name = "estadoContrato", nullable = false)
+    private String estadoContrato;
+
     @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
+    @JoinColumn(name = "idUsuarioManager")
+    private Usuario idUsuarioManager;
+
+    @ManyToOne
+    @JoinColumn(name = "idUsuarioTalento")
+    private Usuario idUsuarioTalento;
 
     @ManyToOne
     @JoinColumn(name = "idBanda")
@@ -34,13 +42,15 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(int idContrato, String acuerdoContrato, Date fechaContrato, String duracionContrato, double salarioContrato, Usuario usuario, Banda banda) {
+    public Contrato(int idContrato, String acuerdoContrato, LocalDate fechaContrato, String duracionContrato, double salarioContrato, String estadoContrato, Usuario idUsuarioManager, Usuario idUsuarioTalento, Banda banda) {
         this.idContrato = idContrato;
         this.acuerdoContrato = acuerdoContrato;
         this.fechaContrato = fechaContrato;
         this.duracionContrato = duracionContrato;
         this.salarioContrato = salarioContrato;
-        this.usuario = usuario;
+        this.estadoContrato = estadoContrato;
+        this.idUsuarioManager = idUsuarioManager;
+        this.idUsuarioTalento = idUsuarioTalento;
         this.banda = banda;
     }
 
@@ -60,11 +70,11 @@ public class Contrato {
         this.acuerdoContrato = acuerdoContrato;
     }
 
-    public Date getFechaContrato() {
+    public LocalDate getFechaContrato() {
         return fechaContrato;
     }
 
-    public void setFechaContrato(Date fechaContrato) {
+    public void setFechaContrato(LocalDate fechaContrato) {
         this.fechaContrato = fechaContrato;
     }
 
@@ -84,12 +94,28 @@ public class Contrato {
         this.salarioContrato = salarioContrato;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String isEstadoContrato() {
+        return estadoContrato;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setEstadoContrato(String estadoContrato) {
+        this.estadoContrato = estadoContrato;
+    }
+
+    public Usuario getIdUsuarioManager() {
+        return idUsuarioManager;
+    }
+
+    public void setIdUsuarioManager(Usuario idUsuarioManager) {
+        this.idUsuarioManager = idUsuarioManager;
+    }
+
+    public Usuario getIdUsuarioTalento() {
+        return idUsuarioTalento;
+    }
+
+    public void setIdUsuarioTalento(Usuario idUsuarioTalento) {
+        this.idUsuarioTalento = idUsuarioTalento;
     }
 
     public Banda getBanda() {

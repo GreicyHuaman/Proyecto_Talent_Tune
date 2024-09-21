@@ -3,6 +3,7 @@ package pe.edu.upc.talent_tune.dtos;
 import pe.edu.upc.talent_tune.entities.Categoria;
 import pe.edu.upc.talent_tune.entities.Usuario;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ContenidoDTO {
@@ -13,7 +14,7 @@ public class ContenidoDTO {
 
     private String titulo;
 
-    private Date fecha;
+    private LocalDate fecha;
 
     private int visualizaciones;
 
