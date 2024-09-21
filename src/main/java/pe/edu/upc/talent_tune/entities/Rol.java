@@ -23,6 +23,10 @@ public class Rol implements Serializable {
     @JoinColumn(name = "idCategoria")
     private Categoria categoria;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Usuario usuario;
+
     public Rol() {
     }
 

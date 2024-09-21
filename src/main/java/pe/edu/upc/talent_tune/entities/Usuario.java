@@ -12,10 +12,10 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
-    @Column(name = "nombreUsuario", nullable = false, length = 20)
-    private String nombreUsuario;
-    @Column(name = "contrasenia", nullable = false, length = 20)
-    private String contrasenia;
+    @Column(name = "username", nullable = false, length = 20)
+    private String username;
+    @Column(name = "password", nullable = false, length = 20)
+    private String password;
     private Boolean enabled;
     @Column(name = "descripcion", length = 45)
     private String descripcion;
@@ -27,9 +27,11 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "idPersona")
     private Persona persona;
 
-    @ManyToOne
-    @JoinColumn(name = "idRol")
-    private Rol roles;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Rol> roles;
+
     @ManyToOne
     @JoinColumn(name = "idEvento")
     private Evento evento;
@@ -43,15 +45,15 @@ public class Usuario implements Serializable {
         this.contrasenia = contrasenia;
         this.descripcion = descripcion;
         this.persona = persona;
-        this.rol = rol;
+        this.Rol = rol;
         this.evento = evento;
     }
 
-    public int getIdUsuario() {
+    public int getIdPersona() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdPersona(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -87,12 +89,12 @@ public class Usuario implements Serializable {
         this.persona = persona;
     }
 
-    public Rol getroles() {
-        return roles;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setroles(Rol rol) {
-        this.roles = rol;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     public Evento getEvento() {
@@ -103,12 +105,3 @@ public class Usuario implements Serializable {
         this.evento = evento;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-}
