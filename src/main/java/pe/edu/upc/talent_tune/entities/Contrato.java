@@ -2,7 +2,7 @@ package pe.edu.upc.talent_tune.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "Contrato")
@@ -15,7 +15,7 @@ public class Contrato {
     private String acuerdoContrato;
 
     @Column(name = "fechaContrato", nullable = false, length = 30)
-    private Date fechaContrato;
+    private LocalDate fechaContrato;
 
     @Column(name = "duracionContrato", nullable = false, length = 30)
     private String duracionContrato;
@@ -41,7 +41,7 @@ public class Contrato {
     public Contrato() {
     }
 
-    public Contrato(int idContrato, String acuerdoContrato, Date fechaContrato, String duracionContrato, double salarioContrato, String estadoContrato, Usuario idUsuarioManager, Usuario idUsuarioTalento, Banda banda) {
+    public Contrato(int idContrato, String acuerdoContrato, LocalDate fechaContrato, String duracionContrato, double salarioContrato, String estadoContrato, Usuario idUsuarioManager, Usuario idUsuarioTalento, Banda banda) {
         this.idContrato = idContrato;
         this.acuerdoContrato = acuerdoContrato;
         this.fechaContrato = fechaContrato;
@@ -69,11 +69,11 @@ public class Contrato {
         this.acuerdoContrato = acuerdoContrato;
     }
 
-    public Date getFechaContrato() {
+    public LocalDate getFechaContrato() {
         return fechaContrato;
     }
 
-    public void setFechaContrato(Date fechaContrato) {
+    public void setFechaContrato(LocalDate fechaContrato) {
         this.fechaContrato = fechaContrato;
     }
 
