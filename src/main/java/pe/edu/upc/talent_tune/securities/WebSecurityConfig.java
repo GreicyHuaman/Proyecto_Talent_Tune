@@ -21,18 +21,31 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
+<<<<<<< HEAD
+=======
+//@Profile(value = {"development", "production"})
+//Clase S7
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class WebSecurityConfig {
     @Autowired
+<<<<<<< HEAD
     private JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+=======
+    private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 
     @Autowired
     private UserDetailsService jwtUserDetailsService;
 
     @Autowired
+<<<<<<< HEAD
     private JWTRequestFilter jwtRequestFilter;
+=======
+    private JwtRequestFilter  jwtRequestFilter;
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 
     @Autowired
     @Qualifier("handlerExceptionResolver")
@@ -69,4 +82,8 @@ public class WebSecurityConfig {
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 }

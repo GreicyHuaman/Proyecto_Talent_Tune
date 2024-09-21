@@ -4,9 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talent_tune.dtos.BandaDTO;
+import pe.edu.upc.talent_tune.dtos.BandasMasContratosActivosDTO;
 import pe.edu.upc.talent_tune.entities.Banda;
 import pe.edu.upc.talent_tune.serviceinterfaces.IBandaService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,5 +44,18 @@ public class BandaController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id){
         bS.delete(id);
+    }
+
+    @GetMapping("/BandasMasContratosActivos")
+    public List<BandasMasContratosActivosDTO> obtener(){
+        List<String[]>lista=bS.BandasMasContratosActivos();
+        List<BandasMasContratosActivosDTO>listaDTO=new ArrayList<>();
+        for (String[] columna:lista) {
+            BandasMasContratosActivosDTO dto=new BandasMasContratosActivosDTO();
+            dto.setNombreBanda(columna[0]);
+            dto.setContratosActivos(Integer.parseInt(columna[1]));
+            listaDTO.add(dto);
+        }
+        return listaDTO;
     }
 }

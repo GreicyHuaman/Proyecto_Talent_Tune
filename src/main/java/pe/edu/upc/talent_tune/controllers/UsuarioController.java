@@ -21,6 +21,7 @@ public class UsuarioController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+<<<<<<< HEAD
 
     @PostMapping
     public void registrar(@RequestBody UsuarioDTO dto) {
@@ -32,21 +33,37 @@ public class UsuarioController {
     }
 
 
+=======
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
     @GetMapping
     public List<UsuarioDTO> listarUsuarios() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, UsuarioDTO.class);
         }).collect(Collectors.toList());
-    };
+    }
 
+    ;
+
+<<<<<<< HEAD
+=======
+    @PostMapping
+    public void registrar(@RequestBody UsuarioDTO dto) {
+        ModelMapper m = new ModelMapper();
+        Usuario usuario = m.map(dto, Usuario.class);
+        String encodedPassword = passwordEncoder.encode(usuario.getPassword());
+        usuario.setPassword(encodedPassword);
+        uS.insert(usuario);
+    }
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 
     @PatchMapping
-    public void modificar (@RequestBody UsuarioDTO dto){
+    public void modificar(@RequestBody UsuarioDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuario usuario = m.map(dto, Usuario.class);
         uS.update(usuario);
     }
+
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id) {
         uS.delete(id);
@@ -58,7 +75,9 @@ public class UsuarioController {
             ModelMapper m = new ModelMapper();
             return m.map(x, UsuarioDTO.class);
         }).collect(Collectors.toList());
-    };
+    }
+
+    ;
 
     @GetMapping("/estudios")
     public List<UsuarioDTO> buscarPorEstudios(@RequestParam("estudios") String estudios) {
@@ -66,7 +85,9 @@ public class UsuarioController {
             ModelMapper m = new ModelMapper();
             return m.map(x, UsuarioDTO.class);
         }).collect(Collectors.toList());
-    };
+    }
+
+    ;
 
 
 }

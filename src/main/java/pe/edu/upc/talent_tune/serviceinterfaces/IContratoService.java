@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface IContratoService {
 
-
     public List<Contrato> list();
 
     public void insert(Contrato contrato);

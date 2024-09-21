@@ -4,7 +4,10 @@ import pe.edu.upc.talent_tune.entities.Banda;
 import pe.edu.upc.talent_tune.entities.Usuario;
 
 import java.time.LocalDate;
+<<<<<<< HEAD
 import java.util.Date;
+=======
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 
 public class ContratoDTO {
 

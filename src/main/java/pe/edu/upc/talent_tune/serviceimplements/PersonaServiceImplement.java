@@ -38,5 +38,10 @@ public class PersonaServiceImplement implements IPersonaService {
         return pR.buscar(nombre);
     }
 
+    @Override
+    public List<String[]> edadPromedioArtistas() {
+        return pR.edadPromedioArtistas();
+    }
+
 
 }

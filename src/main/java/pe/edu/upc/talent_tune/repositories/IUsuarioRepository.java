@@ -2,9 +2,13 @@ package pe.edu.upc.talent_tune.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.data.jpa.repository.Modifying;
 =======
 >>>>>>> d92ee2752fe27327021580c0fbf467a0571c339f
+=======
+import org.springframework.data.jpa.repository.Modifying;
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -15,6 +19,7 @@ import java.util.List;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
+<<<<<<< HEAD
 <<<<<<< HEAD
     public Usuario findOneByUsername(String username);
 
@@ -30,9 +35,23 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);
 =======
   @Query("Select u from Usuario u where u.persona.pais like %:pais%")
+=======
+    public Usuario findOneByUsername (String username);
+
+    @Query("Select u from Usuario u where u.persona.pais like %:pais%")
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
     public List<Usuario> buscarPorPais(@Param("pais") String pais);
 
-  @Query("Select u from Usuario u where u.persona.estudios like %:estudios%")
+    @Query("Select u from Usuario u where u.persona.estudios like %:estudios%")
     public List<Usuario> buscarPorEstudios(@Param("estudios") String estudios);
+<<<<<<< HEAD
 >>>>>>> d92ee2752fe27327021580c0fbf467a0571c339f
+=======
+
+    //INSERTAR ROLES
+    @Transactional
+    @Modifying
+    @Query(value = "insert into Roles (rol, idUsuario) VALUES (:rol, :idUsuario)", nativeQuery = true)
+    public void insRol(@Param("rol") String authority, @Param("idUsuario") int idUsuario);
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 }

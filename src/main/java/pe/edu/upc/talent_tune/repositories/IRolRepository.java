@@ -10,8 +10,13 @@ import java.util.List;
 
 @Repository
 public interface IRolRepository extends JpaRepository<Rol, Integer> {
+<<<<<<< HEAD
     @Query(value=" SELECT r.tipo_rol, c.tipo_categoria\n" +
             " FROM Rol r\n" +
             " JOIN Categoria c ON r.id_categoria = c.id_categoria;",nativeQuery = true)
     public List<String[]> obtenerconsulta(@Param("tipoCategoria") String tipoCategoria);
+=======
+
+
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 }

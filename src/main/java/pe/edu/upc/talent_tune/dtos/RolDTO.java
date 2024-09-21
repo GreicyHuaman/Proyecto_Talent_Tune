@@ -1,6 +1,7 @@
 package pe.edu.upc.talent_tune.dtos;
 
 import pe.edu.upc.talent_tune.entities.Categoria;
+import pe.edu.upc.talent_tune.entities.Usuario;
 
 public class RolDTO {
     private int idRol;
@@ -8,6 +9,7 @@ public class RolDTO {
     private String areaDestacada;
     private String agencia;
     private Categoria categoria;
+    private Usuario usuarios;
 
     public int getIdRol() {
         return idRol;
@@ -47,5 +49,13 @@ public class RolDTO {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Usuario getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuario usuarios) {
+        this.usuarios = usuarios;
     }
 }

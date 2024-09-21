@@ -13,6 +13,7 @@ import pe.edu.upc.talent_tune.repositories.IUsuarioRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
     @Autowired
@@ -35,4 +36,30 @@ public class JwtUserDetailsService implements UserDetailsService {
         UserDetails ud = new org.springframework.security.core.userdetails.User(usuario.getNombreUsuario(), usuario.getContrasenia(), usuario.getEnabled(), true, true, true, roles);
 
         return ud;
+=======
+//Clase 2
+@Service
+public class JwtUserDetailsService implements UserDetailsService {
+    @Autowired
+    private IUsuarioRepository uRepo;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario user = uRepo.findOneByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("User not exists", username));
+        }
+
+        List<GrantedAuthority> roles = new ArrayList<>();
+
+        user.getRol().forEach(rol -> {
+            roles.add(new SimpleGrantedAuthority(rol.getTipoRol()));
+        });
+
+        UserDetails ud = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getEnabled(), true, true, true, roles);
+
+        return ud;
+    }
+>>>>>>> 30cab398753d56d91870dfbcdf2fbe9abdcc3504
 }

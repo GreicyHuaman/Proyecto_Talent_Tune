@@ -6,8 +6,11 @@ import java.util.List;
 
 public interface IRolService {
     public List<Rol> list();
+
     public void insert(Rol r);
+
     public void update(Rol r);
+
     public void delete(int id);
     public List<String[]> obtenerconsulta(String tipoCategoria);
 }

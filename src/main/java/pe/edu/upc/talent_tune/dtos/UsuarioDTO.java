@@ -2,15 +2,14 @@ package pe.edu.upc.talent_tune.dtos;
 
 import pe.edu.upc.talent_tune.entities.Evento;
 import pe.edu.upc.talent_tune.entities.Persona;
-import pe.edu.upc.talent_tune.entities.Rol;
 
 public class UsuarioDTO {
     private int idUsuario;
-    private String nombreUsuario;
-    private String contrasenia;
+    private String username;
+    private String password;
     private String descripcion;
+    private Boolean Enabled;
     private Persona persona;
-    private Rol rol;
     private Evento evento;
     private Boolean enabled;
     private String nombreRol;
@@ -23,20 +22,20 @@ public class UsuarioDTO {
         this.idUsuario = idUsuario;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getDescripcion() {
@@ -47,20 +46,20 @@ public class UsuarioDTO {
         this.descripcion = descripcion;
     }
 
+    public Boolean getEnabled() {
+        return Enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        Enabled = enabled;
+    }
+
     public Persona getPersona() {
         return persona;
     }
 
     public void setPersona(Persona persona) {
         this.persona = persona;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
     }
 
     public Evento getEvento() {
