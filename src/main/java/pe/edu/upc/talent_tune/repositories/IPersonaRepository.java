@@ -13,4 +13,10 @@ public interface IPersonaRepository extends JpaRepository<Persona, Integer> {
     @Query("Select p from Persona p where p.nombres like %:nombre%")
     public List<Persona> buscar(@Param("nombre") String nombre);
 
+    @Query(value = "SELECT ROUND(AVG(EXTRACT(YEAR FROM AGE(p.fecha_nacimiento)))) AS edad_promedio\n" +
+            " FROM usuario u\n" +
+            " JOIN persona p ON u.id_persona = p.id_persona\n" +
+            " JOIN rol r ON u.id_rol = r.id_rol\n" +
+            " WHERE r.tipo_rol = 'Artista';",nativeQuery = true)
+    public List<String[]>edadPromedioArtistas();
 }

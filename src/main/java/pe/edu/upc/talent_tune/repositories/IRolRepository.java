@@ -7,4 +7,5 @@ import pe.edu.upc.talent_tune.entities.Rol;
 @Repository
 public interface IRolRepository extends JpaRepository<Rol, Integer> {
 
+
 }

@@ -33,4 +33,9 @@ public class BandaServiceImplement implements IBandaService {
     public void delete(int id) {
         bR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> BandasMasContratosActivos() {
+        return bR.BandasMasContratosActivos();
+    }
 }

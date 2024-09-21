@@ -9,4 +9,5 @@ public interface IPersonaService {
     public void update(Persona persona);
     public void delete(int id);
     public List<Persona> buscar(String nombres);
+    public List<String[]>edadPromedioArtistas();
 }
