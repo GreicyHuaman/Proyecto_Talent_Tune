@@ -37,5 +37,9 @@ public class ContenidoServiceImplement implements IContenidoService {
     @Override
     public List<String[]> CatPorContenido(String tipocategoria) {
         return coR.CatPorContenido(tipocategoria);
+    @Override
+    public List<String[]> obtenerFiltroContenido(String tipocontenido) {
+        return coR.filtroContenido(tipocontenido);
+
     }
 }

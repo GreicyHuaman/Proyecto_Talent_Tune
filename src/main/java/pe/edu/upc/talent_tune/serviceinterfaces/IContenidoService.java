@@ -16,4 +16,7 @@ public interface IContenidoService {
 
     public List<String[]> CatPorContenido(String tipocategoria);
 
+    public List<String[]> obtenerFiltroContenido(String tipocontenido);
+
+
 }

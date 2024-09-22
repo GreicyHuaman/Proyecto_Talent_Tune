@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talent_tune.dtos.CategoriaContenidoDTO;
 import pe.edu.upc.talent_tune.dtos.ContenidoDTO;
+import pe.edu.upc.talent_tune.dtos.FiltroContenidoDTO;
+import pe.edu.upc.talent_tune.dtos.UsuarioDTO;
 import pe.edu.upc.talent_tune.entities.Contenido;
 import pe.edu.upc.talent_tune.serviceinterfaces.IContenidoService;
 
@@ -47,6 +49,7 @@ public class ContenidoController {
         coS.delete(id);
     }
 
+
     @GetMapping("/ContenidoPorCategoria/{tipoCategoria}")
     public List<CategoriaContenidoDTO> CatPorContenido(@PathVariable String tipoCategoria) {
         List<String[]> lista = coS.CatPorContenido(tipoCategoria);
@@ -61,4 +64,13 @@ public class ContenidoController {
         }
         return listaDTO;
     }
+
+    @GetMapping("/filtrocontenido")
+    public List<FiltroContenidoDTO> obtenerFiltroContenido(@RequestParam("tipocontenido") String tipocontenido) {
+        return coS.obtenerFiltroContenido(tipocontenido).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, FiltroContenidoDTO.class);
+        }).collect(Collectors.toList());
+    };
+
 }
