@@ -6,10 +6,15 @@ import java.util.List;
 
 public interface IUsuarioService {
     public List<Usuario> list();
+
     public void insert(Usuario usuario);
+
     public void update(Usuario usuario);
+
     public void delete(int id);
+
     public List<Usuario> buscarPorPais(String pais);
+
     public List<Usuario> buscarPorEstudios(String estudios);
     public List<String[]> obtenerUsuarioMasVisualizaciones();
 

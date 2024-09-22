@@ -3,7 +3,7 @@ package pe.edu.upc.talent_tune.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @Entity
 @Table(name = "Contrato")
