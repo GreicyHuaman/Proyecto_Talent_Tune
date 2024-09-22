@@ -12,4 +12,6 @@ public interface IEventoService {
     public void update(Evento evento);
 
     public void delete(int id);
+
+    public List<String[]> CatPorEvento(String tipocategoria);
 }

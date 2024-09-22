@@ -14,6 +14,9 @@ public interface IContenidoService {
 
     public void delete(int id);
 
+    public List<String[]> CatPorContenido(String tipocategoria);
+
     public List<String[]> obtenerFiltroContenido(String tipocontenido);
+
 
 }

@@ -33,4 +33,9 @@ public class EventoServiceImplement implements IEventoService {
     public void delete(int id) {
         eR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> CatPorEvento(String tipocategoria) {
+        return eR.CatPorEvento(tipocategoria);
+    }
 }
