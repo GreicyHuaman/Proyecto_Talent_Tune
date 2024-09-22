@@ -3,6 +3,7 @@ package pe.edu.upc.talent_tune.dtos;
 import pe.edu.upc.talent_tune.entities.Banda;
 import pe.edu.upc.talent_tune.entities.Usuario;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class MensajeDTO {
@@ -11,7 +12,7 @@ public class MensajeDTO {
 
     private String contenidoMensaje;
 
-    private Date fechaMensaje;
+    private LocalDate fechaMensaje;
 
     private Usuario idUsuarioManager;
 
@@ -35,11 +36,11 @@ public class MensajeDTO {
         this.contenidoMensaje = contenidoMensaje;
     }
 
-    public Date getFechaMensaje() {
+    public LocalDate getFechaMensaje() {
         return fechaMensaje;
     }
 
-    public void setFechaMensaje(Date fechaMensaje) {
+    public void setFechaMensaje(LocalDate fechaMensaje) {
         this.fechaMensaje = fechaMensaje;
     }
 

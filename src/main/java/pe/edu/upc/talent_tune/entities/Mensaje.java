@@ -2,6 +2,7 @@ package pe.edu.upc.talent_tune.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,7 +16,7 @@ public class Mensaje {
     private String contenidoMensaje;
 
     @Column(name = "fechaMensaje", nullable = false, length = 30)
-    private Date fechaMensaje;
+    private LocalDate fechaMensaje;
 
     @ManyToOne
     @JoinColumn(name = "idUsuarioManager")
@@ -32,7 +33,7 @@ public class Mensaje {
     public Mensaje() {
     }
 
-    public Mensaje(int idMensaje, String contenidoMensaje, Date fechaMensaje, Usuario idUsuarioManager, Usuario idUsuarioTalento, Banda banda) {
+    public Mensaje(int idMensaje, String contenidoMensaje, LocalDate fechaMensaje, Usuario idUsuarioManager, Usuario idUsuarioTalento, Banda banda) {
         this.idMensaje = idMensaje;
         this.contenidoMensaje = contenidoMensaje;
         this.fechaMensaje = fechaMensaje;
@@ -57,11 +58,11 @@ public class Mensaje {
         this.contenidoMensaje = contenidoMensaje;
     }
 
-    public Date getFechaMensaje() {
+    public LocalDate getFechaMensaje() {
         return fechaMensaje;
     }
 
-    public void setFechaMensaje(Date fechaMensaje) {
+    public void setFechaMensaje(LocalDate fechaMensaje) {
         this.fechaMensaje = fechaMensaje;
     }
 

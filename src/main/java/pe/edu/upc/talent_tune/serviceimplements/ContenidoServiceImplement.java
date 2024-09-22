@@ -33,4 +33,9 @@ public class ContenidoServiceImplement implements IContenidoService {
     public void delete(int id) {
         coR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> obtenerFiltroContenido(String tipocontenido) {
+        return coR.filtroContenido(tipocontenido);
+    }
 }

@@ -14,4 +14,6 @@ public interface IContenidoService {
 
     public void delete(int id);
 
+    public List<String[]> obtenerFiltroContenido(String tipocontenido);
+
 }

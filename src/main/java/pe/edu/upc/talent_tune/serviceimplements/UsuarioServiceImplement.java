@@ -43,4 +43,9 @@ public class UsuarioServiceImplement implements IUsuarioService {
     public List<Usuario> buscarPorEstudios(String estudios) {
         return uR.buscarPorEstudios(estudios);
     }
+
+    @Override
+    public List<String[]> obtenerUsuarioMasVisualizaciones() {
+        return uR.usuariosMasVisualizaciones();
+    }
 }

@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talent_tune.dtos.UsuarioDTO;
+import pe.edu.upc.talent_tune.dtos.UsuarioMasVisualizacionesDTO;
 import pe.edu.upc.talent_tune.entities.Usuario;
 import pe.edu.upc.talent_tune.serviceinterfaces.IUsuarioService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,5 +74,18 @@ public class UsuarioController {
 
     ;
 
+
+    @GetMapping("/usuariosmasvisualizaciones")
+    public List<UsuarioMasVisualizacionesDTO> obtenerUsuariosMasVisualizaciones(){
+        List<String[]>lista=uS.obtenerUsuarioMasVisualizaciones();
+        List<UsuarioMasVisualizacionesDTO>listaDTO=new ArrayList<>();
+        for(String[]columna:lista){
+            UsuarioMasVisualizacionesDTO dto=new UsuarioMasVisualizacionesDTO();
+            dto.setNombre(columna[0]);
+            dto.setVisualizaciones(Integer.parseInt(columna[1]));
+            listaDTO.add(dto);
+        }
+        return listaDTO;
+    }
 
 }

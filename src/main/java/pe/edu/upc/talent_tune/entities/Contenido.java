@@ -3,6 +3,7 @@ package pe.edu.upc.talent_tune.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,7 +21,7 @@ public class Contenido {
     private String titulo;
 
     @Column(name = "fechaContenido", nullable = false)
-    private Date fecha;
+    private LocalDate fecha;
 
     @Column(name = "visualizaciones", nullable = false)
     private int visualizaciones;
@@ -36,7 +37,7 @@ public class Contenido {
     public Contenido() {
     }
 
-    public Contenido(int idContenido, String tipoContenido, String titulo, Date fecha, int visualizaciones, Categoria idCategoria, Usuario usuario) {
+    public Contenido(int idContenido, String tipoContenido, String titulo, LocalDate fecha, int visualizaciones, Categoria idCategoria, Usuario usuario) {
         this.idContenido = idContenido;
         this.tipoContenido = tipoContenido;
         this.titulo = titulo;
@@ -70,11 +71,11 @@ public class Contenido {
         this.titulo = titulo;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

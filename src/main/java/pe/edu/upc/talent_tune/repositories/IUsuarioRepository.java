@@ -20,6 +20,15 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query("Select u from Usuario u where u.persona.estudios like %:estudios%")
     public List<Usuario> buscarPorEstudios(@Param("estudios") String estudios);
 
+  @Query(value= "SELECT u.nombre_usuario, c.visualizaciones\n" +
+          " FROM usuario u\n" +
+          " INNER JOIN contenido c ON u.id_usuario = u.id_usuario\n" +
+          " WHERE c.visualizaciones > 0\n" +
+          " GROUP BY u.nombre_usuario, c.visualizaciones\n" +
+          " ORDER BY c.visualizaciones DESC " +
+          " LIMIT 3", nativeQuery = true)
+   public List<String[]> usuariosMasVisualizaciones();
+
     //INSERTAR ROLES
     @Transactional
     @Modifying

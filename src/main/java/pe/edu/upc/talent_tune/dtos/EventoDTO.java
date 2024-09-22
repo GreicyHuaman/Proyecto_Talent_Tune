@@ -1,12 +1,14 @@
 package pe.edu.upc.talent_tune.dtos;
 import pe.edu.upc.talent_tune.entities.Categoria;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 public class EventoDTO {
 
     private int idEvento;
     private String nombreEvento;
-    private Date fechaEvento;
+    private LocalDate fechaEvento;
     private String descripcionEvento;
     private Categoria categoria;
 
@@ -26,11 +28,11 @@ public class EventoDTO {
         this.nombreEvento = nombreEvento;
     }
 
-    public Date getFechaEvento() {
+    public LocalDate getFechaEvento() {
         return fechaEvento;
     }
 
-    public void setFechaEvento(Date fechaEvento) {
+    public void setFechaEvento(LocalDate fechaEvento) {
         this.fechaEvento = fechaEvento;
     }
 
