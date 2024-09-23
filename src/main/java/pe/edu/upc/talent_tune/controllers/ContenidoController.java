@@ -3,10 +3,7 @@ package pe.edu.upc.talent_tune.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.talent_tune.dtos.CategoriaContenidoDTO;
-import pe.edu.upc.talent_tune.dtos.ContenidoDTO;
-import pe.edu.upc.talent_tune.dtos.FiltroContenidoDTO;
-import pe.edu.upc.talent_tune.dtos.UsuarioDTO;
+import pe.edu.upc.talent_tune.dtos.*;
 import pe.edu.upc.talent_tune.entities.Contenido;
 import pe.edu.upc.talent_tune.serviceinterfaces.IContenidoService;
 
@@ -72,5 +69,18 @@ public class ContenidoController {
             return m.map(x, FiltroContenidoDTO.class);
         }).collect(Collectors.toList());
     };
+
+    @GetMapping("/cantidadesvisua")
+    public List<VisualizacionesContenidoDTO> Ver(@RequestParam String titulo){
+        List<String[]> Lista = coS.visualizacionescontenido(titulo);
+        List<VisualizacionesContenidoDTO> hcListaDTO = new ArrayList<>();
+        for (String[] columna : Lista){
+            VisualizacionesContenidoDTO DTO = new VisualizacionesContenidoDTO();
+            DTO.setTitulo(columna[0]);
+            DTO.setVisualizaciones(Integer.parseInt(columna[1]));
+            hcListaDTO.add(DTO);
+        }
+        return hcListaDTO;
+    }
 
 }

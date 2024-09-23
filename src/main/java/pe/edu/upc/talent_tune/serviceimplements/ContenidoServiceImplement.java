@@ -40,6 +40,10 @@ public class ContenidoServiceImplement implements IContenidoService {
     }
     public List<String[]> obtenerFiltroContenido(String tipocontenido) {
         return coR.filtroContenido(tipocontenido);
+    }
 
+    @Override
+    public List<String[]> visualizacionescontenido(String titulo) {
+        return coR.visualizacionescontenido(titulo);
     }
 }

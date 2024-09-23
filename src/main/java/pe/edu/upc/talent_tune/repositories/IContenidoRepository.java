@@ -5,9 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.talent_tune.entities.Contenido;
-import pe.edu.upc.talent_tune.entities.Usuario;
-
-import java.util.List;
 
 import java.util.List;
 
@@ -26,5 +23,10 @@ public interface IContenidoRepository extends JpaRepository<Contenido, Integer> 
             " WHERE tipo_contenido like %:tipocontenido%\n" +
             " ORDER BY visualizaciones ASC", nativeQuery = true)
     public List<String[]> filtroContenido(@Param("tipocontenido") String tipocontenido);
+
+    @Query(" SELECT c.titulo, c.visualizaciones\n" +
+            " FROM Contenido c\n" +
+            " WHERE c.visualizaciones > 500")
+    List<String[]> visualizacionescontenido(@Param("titulo") String titulo);
 
 }

@@ -18,5 +18,6 @@ public interface IContenidoService {
 
     public List<String[]> obtenerFiltroContenido(String tipocontenido);
 
+    public  List<String[]> visualizacionescontenido(String titulo);
 
 }

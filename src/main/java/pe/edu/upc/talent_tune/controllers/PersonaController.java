@@ -3,7 +3,6 @@ package pe.edu.upc.talent_tune.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.talent_tune.dtos.BandasMasContratosActivosDTO;
 import pe.edu.upc.talent_tune.dtos.EdadPromedioArtistasDTO;
 import pe.edu.upc.talent_tune.dtos.PersonaDTO;
 import pe.edu.upc.talent_tune.entities.Persona;

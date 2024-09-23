@@ -12,4 +12,6 @@ public interface IRolService {
     public void update(Rol r);
 
     public void delete(int id);
+
+    public List<String[]> obtenerconsulta(String tipoCategoria);
 }
