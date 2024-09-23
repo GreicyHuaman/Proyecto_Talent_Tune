@@ -2,6 +2,7 @@ package pe.edu.upc.talent_tune.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talent_tune.dtos.MensajeDTO;
 import pe.edu.upc.talent_tune.entities.Mensaje;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
 @RequestMapping("/mensajes")
 public class MensajeController {
 

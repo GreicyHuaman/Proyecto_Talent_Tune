@@ -2,6 +2,7 @@ package pe.edu.upc.talent_tune.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talent_tune.dtos.UsuarioDTO;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
@@ -30,8 +32,6 @@ public class UsuarioController {
             return m.map(x, UsuarioDTO.class);
         }).collect(Collectors.toList());
     }
-
-    ;
 
     @PostMapping
     public void registrar(@RequestBody UsuarioDTO dto) {
@@ -62,8 +62,6 @@ public class UsuarioController {
         }).collect(Collectors.toList());
     }
 
-    ;
-
     @GetMapping("/estudios")
     public List<UsuarioDTO> buscarPorEstudios(@RequestParam("estudios") String estudios) {
         return uS.buscarPorEstudios(estudios).stream().map(x -> {
@@ -71,8 +69,6 @@ public class UsuarioController {
             return m.map(x, UsuarioDTO.class);
         }).collect(Collectors.toList());
     }
-
-    ;
 
 
     @GetMapping("/usuariosmasvisualizaciones")

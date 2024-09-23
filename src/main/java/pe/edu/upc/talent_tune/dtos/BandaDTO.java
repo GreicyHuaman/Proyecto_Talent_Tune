@@ -1,6 +1,6 @@
 package pe.edu.upc.talent_tune.dtos;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 
 public class BandaDTO {
@@ -9,7 +9,7 @@ public class BandaDTO {
 
     private String nombreBanda;
 
-    private Date fechaBanda;
+    private LocalDate fechaBanda;
 
     public int getIdBanda() {
         return idBanda;
@@ -27,11 +27,11 @@ public class BandaDTO {
         this.nombreBanda = nombreBanda;
     }
 
-    public Date getFechaBanda() {
+    public LocalDate getFechaBanda() {
         return fechaBanda;
     }
 
-    public void setFechaBanda(Date fechaBanda) {
+    public void setFechaBanda(LocalDate fechaBanda) {
         this.fechaBanda = fechaBanda;
     }
 }

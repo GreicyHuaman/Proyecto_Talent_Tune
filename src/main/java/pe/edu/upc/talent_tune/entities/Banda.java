@@ -2,6 +2,7 @@ package pe.edu.upc.talent_tune.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,16 +13,16 @@ public class Banda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idBanda;
 
-    @Column(name = "nombreBanda", nullable = false, length = 30)
+    @Column(name = "nombreBanda", nullable = false, length = 50)
     private String nombreBanda;
 
     @Column(name = "fechaBanda", nullable = false)
-    private Date fechaBanda;
+    private LocalDate fechaBanda;
 
     public Banda() {
     }
 
-    public Banda(int idBanda, String nombreBanda, Date fechaBanda) {
+    public Banda(int idBanda, String nombreBanda, LocalDate fechaBanda) {
         this.idBanda = idBanda;
         this.nombreBanda = nombreBanda;
         this.fechaBanda = fechaBanda;
@@ -43,11 +44,11 @@ public class Banda {
         this.nombreBanda = nombreBanda;
     }
 
-    public Date getFechaBanda() {
+    public LocalDate getFechaBanda() {
         return fechaBanda;
     }
 
-    public void setFechaBanda(Date fechaBanda) {
+    public void setFechaBanda(LocalDate fechaBanda) {
         this.fechaBanda = fechaBanda;
     }
 }

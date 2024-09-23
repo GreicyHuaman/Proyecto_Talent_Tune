@@ -2,6 +2,7 @@ package pe.edu.upc.talent_tune.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talent_tune.dtos.*;
 import pe.edu.upc.talent_tune.entities.Contenido;
@@ -19,6 +20,7 @@ public class ContenidoController {
     private IContenidoService coS;
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
     public List<ContenidoDTO> listarContenido(){
         return coS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -28,6 +30,7 @@ public class ContenidoController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
     public void registrar(@RequestBody ContenidoDTO dto){
         ModelMapper m = new ModelMapper();
         Contenido contenido = m.map(dto, Contenido.class);
@@ -35,6 +38,7 @@ public class ContenidoController {
     }
 
     @PatchMapping
+    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
     public void modificar(@RequestBody ContenidoDTO dto){
         ModelMapper m = new ModelMapper();
         Contenido contenido = m.map(dto, Contenido.class);
@@ -42,11 +46,13 @@ public class ContenidoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
     public void eliminar(@PathVariable("id") Integer id){
         coS.delete(id);
     }
 
 
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @GetMapping("/ContenidoPorCategoria/{tipoCategoria}")
     public List<CategoriaContenidoDTO> CatPorContenido(@PathVariable String tipoCategoria) {
         List<String[]> lista = coS.CatPorContenido(tipoCategoria);
@@ -62,6 +68,7 @@ public class ContenidoController {
         return listaDTO;
     }
 
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @GetMapping("/filtrocontenido")
     public List<FiltroContenidoDTO> obtenerFiltroContenido(@RequestParam("tipocontenido") String tipocontenido) {
         return coS.obtenerFiltroContenido(tipocontenido).stream().map(x -> {
@@ -70,6 +77,7 @@ public class ContenidoController {
         }).collect(Collectors.toList());
     };
 
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @GetMapping("/cantidadesvisua")
     public List<VisualizacionesContenidoDTO> Ver(@RequestParam String titulo){
         List<String[]> Lista = coS.visualizacionescontenido(titulo);

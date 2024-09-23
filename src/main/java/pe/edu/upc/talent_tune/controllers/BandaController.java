@@ -2,6 +2,7 @@ package pe.edu.upc.talent_tune.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.talent_tune.dtos.BandaDTO;
 import pe.edu.upc.talent_tune.dtos.BandasMasContratosActivosDTO;
@@ -20,6 +21,7 @@ public class BandaController {
     private IBandaService bS;
 
     @GetMapping
+    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','SEGUIDOR','MANAGER')")
     public List<BandaDTO> listarBanda(){
         return bS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
@@ -28,6 +30,7 @@ public class BandaController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
     public void registrar(@RequestBody BandaDTO dto){
         ModelMapper m = new ModelMapper();
         Banda banda = m.map(dto, Banda.class);
@@ -35,6 +38,7 @@ public class BandaController {
     }
 
     @PatchMapping
+    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
     public void modificar(@RequestBody BandaDTO dto){
         ModelMapper m = new ModelMapper();
         Banda banda = m.map(dto, Banda.class);
@@ -42,11 +46,13 @@ public class BandaController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR')")
     public void eliminar(@PathVariable("id") Integer id){
         bS.delete(id);
     }
 
     @GetMapping("/BandasMasContratosActivos")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public List<BandasMasContratosActivosDTO> obtener(){
         List<String[]>lista=bS.BandasMasContratosActivos();
         List<BandasMasContratosActivosDTO>listaDTO=new ArrayList<>();
