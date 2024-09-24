@@ -6,11 +6,8 @@ import pe.edu.upc.talent_tune.entities.Usuario;
 public class NotificacionDTO {
 
     private int idNotificacion;
-
     private String detalle;
-
     private Usuario usuario;
-
     private Evento evento;
 
     public int getIdNotificacion() {

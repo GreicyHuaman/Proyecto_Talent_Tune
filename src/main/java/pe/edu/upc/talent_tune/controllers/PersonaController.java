@@ -54,6 +54,7 @@ public class PersonaController {
     }
 
     @GetMapping("/EdadPromedioArtistas")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRADOR','MANAGER')")
     public List<EdadPromedioArtistasDTO> edadPromedioArtistas(){
         List<String[]>lista=pS.edadPromedioArtistas();
         List<EdadPromedioArtistasDTO>listaDTO=new ArrayList<>();
