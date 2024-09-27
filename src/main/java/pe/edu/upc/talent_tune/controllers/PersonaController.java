@@ -34,12 +34,14 @@ public class PersonaController {
         Persona pe = m.map(dto, Persona.class);
         pS.insert(pe);
     }
+
     @PatchMapping
-    public void modificar (@RequestBody PersonaDTO dto){
+    public void modificar(@RequestBody PersonaDTO dto) {
         ModelMapper m = new ModelMapper();
         Persona pe = m.map(dto, Persona.class);
         pS.update(pe);
     }
+
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id) {
         pS.delete(id);
@@ -55,11 +57,11 @@ public class PersonaController {
 
     @GetMapping("/EdadPromedioArtistas")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR','MANAGER')")
-    public List<EdadPromedioArtistasDTO> edadPromedioArtistas(){
-        List<String[]>lista=pS.edadPromedioArtistas();
-        List<EdadPromedioArtistasDTO>listaDTO=new ArrayList<>();
-        for (String[] columna:lista) {
-            EdadPromedioArtistasDTO dto=new EdadPromedioArtistasDTO();
+    public List<EdadPromedioArtistasDTO> edadPromedioArtistas() {
+        List<String[]> lista = pS.edadPromedioArtistas();
+        List<EdadPromedioArtistasDTO> listaDTO = new ArrayList<>();
+        for (String[] columna : lista) {
+            EdadPromedioArtistasDTO dto = new EdadPromedioArtistasDTO();
             dto.setEdadPromedio(Integer.parseInt(columna[0]));
             listaDTO.add(dto);
         }
