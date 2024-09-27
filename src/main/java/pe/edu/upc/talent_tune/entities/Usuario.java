@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuario")
-    private List<Rol> rol;
+    private List<Rol> roles;
 
     @ManyToOne
     @JoinColumn(name = "idEvento")
@@ -38,14 +38,14 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String username, String password, String descripcion, Boolean enabled, Persona persona, List<Rol> rol, Evento evento) {
+    public Usuario(int idUsuario, String username, String password, String descripcion, Boolean enabled, Persona persona, List<Rol> roles, Evento evento) {
         this.idUsuario = idUsuario;
         this.username = username;
         this.password = password;
         this.descripcion = descripcion;
         Enabled = enabled;
         this.persona = persona;
-        this.rol = rol;
+        this.roles = roles;
         this.evento = evento;
     }
 
@@ -97,12 +97,12 @@ public class Usuario implements Serializable {
         this.persona = persona;
     }
 
-    public List<Rol> getRol() {
-        return rol;
+    public List<Rol> getRoles() {
+        return roles;
     }
 
-    public void setRol(List<Rol> rol) {
-        this.rol = rol;
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 
     public Evento getEvento() {
