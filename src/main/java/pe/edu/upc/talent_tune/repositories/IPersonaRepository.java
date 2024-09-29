@@ -17,6 +17,6 @@ public interface IPersonaRepository extends JpaRepository<Persona, Integer> {
             " FROM persona p\n" +
             " JOIN usuario u ON p.id_persona = u.id_persona\n" +
             " JOIN roles r ON u.id_usuario = r.id_usuario\n" +
-            " WHERE r.tipo_rol = 'TALENTO'",nativeQuery = true)
+            " WHERE r.tipo_rol = 'MANAGER'",nativeQuery = true)
     public List<String[]>edadPromedioArtistas();
 }
