@@ -60,7 +60,7 @@ public class PersonaController {
     public List<EdadPromedioArtistasDTO> edadPromedioArtistas() {
         List<String[]> lista = pS.edadPromedioArtistas();
         List<EdadPromedioArtistasDTO> listaDTO = new ArrayList<>();
-        for (String[] columna : lista) {
+        for (String[]columna : lista) {
             EdadPromedioArtistasDTO dto = new EdadPromedioArtistasDTO();
             dto.setEdadPromedio(Integer.parseInt(columna[0]));
             listaDTO.add(dto);
