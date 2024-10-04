@@ -1,7 +1,7 @@
 package pe.edu.upc.talent_tune.dtos;
 
 public class EdadPromedioArtistasDTO {
-    public int edadPromedio;
+    private int edadPromedio;
 
     public int getEdadPromedio() {
         return edadPromedio;
