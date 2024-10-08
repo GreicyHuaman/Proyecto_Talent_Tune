@@ -18,6 +18,7 @@ public class Usuario implements Serializable {
     private String password;
     @Column(name = "descripcion", length = 100)
     private String descripcion;
+    //Cambiar las variables a minusculas
     @Column(name = "Enabled",nullable = false)
     private Boolean Enabled;
     //consultar
@@ -31,6 +32,7 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "idUsuario")
     private List<Rol> roles;
 
+    //ponerlo en usuarioevento y crear esa table intermedia
     @ManyToOne
     @JoinColumn(name = "idEvento")
     private Evento evento;

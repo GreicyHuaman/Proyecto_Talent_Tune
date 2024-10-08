@@ -23,10 +23,10 @@ public class ContratoController {
 
     @GetMapping
     @PreAuthorize("hasAnyAuthority('TALENTO','ADMINISTRADOR','MANAGER')")
-    public List<MensajeDTO> listarContrato(){
+    public List<ContratoDTO> listarContrato(){
         return ctS.list().stream().map(x->{
             ModelMapper m = new ModelMapper();
-            return m.map(x, MensajeDTO.class);
+            return m.map(x, ContratoDTO.class);
         }).collect(Collectors.toList());
     }
 
